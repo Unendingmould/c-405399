@@ -15,7 +15,7 @@ export const FeaturesSection = () => {
           <span className="text-gradient font-medium">Features & Tools</span>
         </h2>
         <p className="text-lg md:text-xl text-gray-400 text-left">
-          Experience professional-grade trading tools and features designed for both novice and experienced crypto traders.
+          Experience professional-grade Investment tools and features designed for both novice and experienced crypto investors.
         </p>
       </div>
 
