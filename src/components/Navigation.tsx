@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Command, Menu } from "lucide-react";
 import { Button } from "./ui/button";
@@ -82,7 +83,7 @@ const Navigation = () => {
               size="sm"
               className="button-gradient"
             >
-              Start Trading
+              Start Investing
             </Button>
           </div>
 
@@ -119,7 +120,7 @@ const Navigation = () => {
                     }}
                     className="button-gradient mt-4"
                   >
-                    Start Trading
+                    Start Investing
                   </Button>
                 </div>
               </SheetContent>

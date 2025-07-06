@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,6 @@ const PricingTier = ({
       <h3 className="text-xl font-medium mb-2">{name}</h3>
       <div className="mb-4">
         <span className="text-4xl font-bold">{price}</span>
-        {price !== "Custom" && <span className="text-gray-400">/month</span>}
       </div>
       <p className="text-gray-400 mb-6">{description}</p>
       <ul className="space-y-3 mb-8 flex-grow">
@@ -38,7 +38,7 @@ const PricingTier = ({
         ))}
       </ul>
       <Button className="button-gradient w-full">
-        Start Trading
+        Start Investing
       </Button>
     </div>
   </CardSpotlight>
@@ -70,7 +70,7 @@ export const PricingSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <PricingTier
           name="Basic Trader"
-          price="$0"
+          price="$0 - $100"
           description="Perfect for beginners starting their crypto journey"
           features={[
             "Basic spot trading",
@@ -81,7 +81,7 @@ export const PricingSection = () => {
         />
         <PricingTier
           name="Pro Trader"
-          price="$29"
+          price="$100 - $1,000"
           description="Advanced features for serious traders"
           features={[
             "Advanced trading tools",
@@ -94,7 +94,7 @@ export const PricingSection = () => {
         />
         <PricingTier
           name="Institutional"
-          price="Custom"
+          price="$1,000+"
           description="Enterprise-grade solutions for institutions"
           features={[
             "Custom trading solutions",
