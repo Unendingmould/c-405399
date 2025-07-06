@@ -69,40 +69,55 @@ export const PricingSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <PricingTier
-          name="Basic Trader"
-          price="$0 - $100"
-          description="Perfect for beginners starting their crypto journey"
+          name="Seedling"
+          price="$1,000 - $10,000"
+          description="Perfect for growing your first crypto roots"
           features={[
-            "Basic spot trading",
-            "Market & limit orders",
-            "Basic market analysis",
-            "Email support"
+            "AI-powered portfolio management",
+            "5-8 cryptocurrency diversification",
+            "Monthly rebalancing",
+            "Portfolio Health Score",
+            "Market trend analysis",
+            "Monthly reports",
+            "Standard security"
           ]}
         />
         <PricingTier
-          name="Pro Trader"
-          price="$100 - $1,000"
-          description="Advanced features for serious traders"
+          name="Growth"
+          price="$10,000 - $100,000"
+          description="Designed for serious crypto growth"
           features={[
-            "Advanced trading tools",
-            "Margin trading up to 10x",
-            "Advanced technical analysis",
+            "Advanced AI management",
+            "10-15 cryptocurrency diversification",
+            "Weekly rebalancing",
+            "Portfolio Health Score Plus",
+            "Predictive analytics",
+            "Smart entry/exit timing",
+            "DeFi yield optimization",
             "Priority support",
-            "API access"
+            "Weekly detailed reports"
           ]}
           isPopular
         />
         <PricingTier
-          name="Institutional"
-          price="$1,000+"
-          description="Enterprise-grade solutions for institutions"
+          name="Forest"
+          price="$100,000+"
+          description="Elite crypto wealth management"
           features={[
-            "Custom trading solutions",
-            "Unlimited trading volume",
-            "OTC desk access",
+            "Premium AI management",
+            "20+ cryptocurrency diversification",
+            "Daily rebalancing",
+            "Portfolio Health Score Pro",
+            "Institutional-grade algorithms",
+            "Multi-exchange arbitrage",
+            "Advanced derivatives trading",
+            "Macro-economic analysis",
+            "Custom strategy development",
             "Dedicated account manager",
-            "Custom API integration",
-            "24/7 priority support"
+            "VIP support",
+            "Portfolio insurance",
+            "Early feature access",
+            "Elite community access"
           ]}
         />
       </div>
