@@ -67,7 +67,7 @@ export const PricingSection = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto" style={{ width: '105%', marginLeft: '-2.5%' }}>
         <PricingTier
           name="Seedling"
           price="$1,000 - $10,000"
@@ -115,9 +115,7 @@ export const PricingSection = () => {
             "Custom strategy development",
             "Dedicated account manager",
             "VIP support",
-            "Portfolio insurance",
-            "Early feature access",
-            "Elite community access"
+            "Portfolio insurance"
           ]}
         />
       </div>

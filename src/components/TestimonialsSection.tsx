@@ -54,9 +54,9 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-normal mb-4">Trusted by Traders</h2>
+          <h2 className="text-5xl font-normal mb-4">Trusted by Crypto Investors</h2>
           <p className="text-muted-foreground text-lg">
-            Join thousands of satisfied traders on CryptoTrade
+            Join thousands of satisfied investors on Treefolio
           </p>
         </motion.div>
 
