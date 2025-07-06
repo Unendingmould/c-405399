@@ -17,7 +17,7 @@ const PricingTier = ({
   features: string[];
   isPopular?: boolean;
 }) => (
-  <CardSpotlight className={`h-full ${isPopular ? "border-primary" : "border-white/10"} border-2`}>
+  <CardSpotlight className={`h-full ${isPopular ? "border-primary" : "border-white/10"} border-2 w-full`}>
     <div className="relative h-full p-6 flex flex-col">
       {isPopular && (
         <span className="text-xs font-medium bg-primary/10 text-primary rounded-full px-3 py-1 w-fit mb-4">
@@ -25,18 +25,18 @@ const PricingTier = ({
         </span>
       )}
       <h3 className="text-xl font-medium mb-2">{name}</h3>
-      <div className="mb-4">
+      <div className="mb-4 flex items-baseline">
         <span className="text-4xl font-bold">{price}</span>
       </div>
       <p className="text-gray-400 mb-6">{description}</p>
-      <ul className="space-y-3 mb-8 flex-grow">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-2">
-            <Check className="w-5 h-5 text-primary" />
-            <span className="text-sm text-gray-300">{feature}</span>
-          </li>
+          <div key={index} className="flex items-start gap-2">
+            <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <span className="text-sm text-gray-300 leading-tight">{feature}</span>
+          </div>
         ))}
-      </ul>
+      </div>
       <Button className="button-gradient w-full">
         Start Investing
       </Button>
@@ -67,7 +67,7 @@ export const PricingSection = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto" style={{ width: '105%', marginLeft: '-2.5%' }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <PricingTier
           name="Seedling"
           price="$1,000 - $10,000"
