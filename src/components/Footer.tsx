@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="space-y-4">
               <h3 className="font-medium text-lg">Treefolio</h3>
               <p className="text-sm text-muted-foreground">
-                Empowering Investors with advanced crypto investment solutions.
+                Empowering Investments with advanced crypto invetsment solutions.
               </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="icon">
@@ -32,7 +32,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Trading Fees
+                    Investment Fees
                   </a>
                 </li>
               </ul>
@@ -43,7 +43,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Trading Guide
+                    Investment Guide
                   </a>
                 </li>
                 <li>
