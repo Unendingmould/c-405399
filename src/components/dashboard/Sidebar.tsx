@@ -13,12 +13,12 @@ import {
 
 const Sidebar = () => {
   const navigationItems = [
-    { icon: LayoutDashboard, title: "Dashboard", active: true },
-    { icon: TrendingUp, title: "Investments" },
-    { icon: Wallet, title: "Portfolio" },
-    { icon: Receipt, title: "Transactions" },
-    { icon: BarChart3, title: "Reports" },
-    { icon: User, title: "Profile" },
+    { icon: LayoutDashboard, title: "Dashboard", active: true, path: "/" },
+    { icon: TrendingUp, title: "Investments", path: "/investments" },
+    { icon: Wallet, title: "Portfolio", path: "/portfolio" },
+    { icon: Receipt, title: "Transactions", path: "/transactions" },
+    { icon: BarChart3, title: "Reports", path: "/reports" },
+    { icon: User, title: "Profile", path: "/profile" },
   ];
 
   const bottomItems = [
