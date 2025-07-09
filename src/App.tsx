@@ -9,6 +9,8 @@ import Reports from "./pages/Reports";
 import Deposit from "./pages/Deposit";
 import DepositConfirmation from "./pages/DepositConfirmation";
 import Withdraw from "./pages/Withdraw";
+import Transactions from "./pages/Transactions";
+import Profile from "./pages/Profile";
 import Sidebar from "./components/dashboard/Sidebar";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
                 <Route path="/deposit" element={<Deposit />} />
                 <Route path="/deposit-confirmation" element={<DepositConfirmation />} />
                 <Route path="/withdraw" element={<Withdraw />} />
+                <Route path="/transactions" element={<Transactions />} />
+                <Route path="/profile" element={<Profile />} />
               </Routes>
             </main>
           </div>
