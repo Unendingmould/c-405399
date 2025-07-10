@@ -25,9 +25,9 @@ const Sidebar = () => {
   ];
 
   const bottomItems = [
-    { icon: HelpCircle, title: "Help Center" },
-    { icon: Settings, title: "Settings" },
-    { icon: LogOut, title: "Logout" },
+    { icon: HelpCircle, title: "Help Center", path: "/help" },
+    { icon: Settings, title: "Settings", path: "/settings" },
+    { icon: LogOut, title: "Logout", path: "/login" },
   ];
 
   return (
@@ -58,16 +58,26 @@ const Sidebar = () => {
       </nav>
       
       <div className="flex flex-col space-y-4">
-        {bottomItems.map((item, index) => (
-          <a
-            key={index}
-            className="sidebar-icon p-3 rounded-lg text-gray-400 hover:text-indigo-400 hover:bg-gray-800 transition-all duration-300"
-            href="#"
-            title={item.title}
-          >
-            <item.icon className="w-6 h-6" />
-          </a>
-        ))}
+        {bottomItems.map((item, index) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={index}
+              to={item.path}
+              className={`sidebar-icon p-3 rounded-lg transition-all duration-300 relative ${
+                isActive 
+                  ? "text-indigo-400 bg-gray-800" 
+                  : "text-gray-400 hover:text-indigo-400 hover:bg-gray-800"
+              }`}
+              title={item.title}
+            >
+              <item.icon className="w-6 h-6" />
+              {isActive && (
+                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4/5 bg-indigo-400 rounded-r-lg" />
+              )}
+            </Link>
+          );
+        })}
       </div>
     </aside>
   );
