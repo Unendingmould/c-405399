@@ -31,19 +31,19 @@ const KPICards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
       {kpiData.map((kpi, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
-          className="glass p-5 rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300"
+          className="glass p-4 md:p-5 rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300"
         >
           <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
             {kpi.title}
           </p>
-          <p className="text-2xl font-semibold text-gray-100">{kpi.value}</p>
+          <p className="text-xl md:text-2xl font-semibold text-gray-100">{kpi.value}</p>
           <p className={`text-sm mt-1 flex items-center ${
             kpi.isPositive === true ? "text-green-400" : 
             kpi.isPositive === false ? "text-red-400" : "text-gray-400"

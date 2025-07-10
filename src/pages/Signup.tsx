@@ -29,7 +29,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen bg-background">
       <div className="w-full max-w-md mx-auto p-4">
         {step === 1 && (
           <div className="glassmorphism rounded-xl p-8 shadow-2xl">

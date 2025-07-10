@@ -22,16 +22,16 @@ const Reports = () => {
 
   return (
     <TooltipProvider>
-      <div className="p-6 md:p-8 space-y-8">
+      <div className="p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8">
         {/* Header */}
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div>
-            <h1 className="text-3xl font-semibold text-foreground">Investment Reports</h1>
-            <p className="text-muted-foreground">Analyze your investment data and download reports.</p>
+            <h1 className="text-2xl md:text-3xl font-semibold text-foreground">Investment Reports</h1>
+            <p className="text-muted-foreground text-sm md:text-base">Analyze your investment data and download reports.</p>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="flex items-center space-x-2">
+              <Button className="flex items-center space-x-2 text-xs md:text-sm px-3 md:px-4">
                 <Download className="w-4 h-4" />
                 <span>Download Report</span>
                 <ChevronDown className="w-4 h-4" />
@@ -64,7 +64,7 @@ const Reports = () => {
         </Card>
 
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <Card>
             <CardContent className="p-5">
               <div className="flex items-center mb-1">
@@ -121,9 +121,9 @@ const Reports = () => {
         </div>
 
         {/* Charts Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-5 gap-4 md:gap-6">
           {/* Portfolio Growth Chart */}
-          <Card className="lg:col-span-3">
+          <Card className="xl:col-span-3">
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle>Portfolio Growth Over Time</CardTitle>
@@ -183,7 +183,7 @@ const Reports = () => {
           </Card>
 
           {/* Asset Allocation Chart */}
-          <Card className="lg:col-span-2">
+          <Card className="xl:col-span-2">
             <CardHeader>
               <CardTitle>Asset Allocation</CardTitle>
             </CardHeader>

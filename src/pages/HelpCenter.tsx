@@ -37,7 +37,7 @@ const HelpCenter = () => {
   };
 
   return (
-    <div className="p-6 md:p-8 space-y-8">
+    <div className="p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
         <div>
           <h1 className="text-3xl font-semibold text-foreground">Help Center</h1>
@@ -45,11 +45,11 @@ const HelpCenter = () => {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="lg:col-span-2 space-y-6 md:space-y-8">
           {/* Search and FAQ Section */}
           <section className="glassmorphism rounded-xl">
-            <div className="p-6 md:p-8">
+            <div className="p-4 md:p-6 lg:p-8">
               <div className="relative mb-6">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
@@ -87,7 +87,7 @@ const HelpCenter = () => {
           </section>
 
           {/* Support Ticket Form */}
-          <section className="glassmorphism p-6 md:p-8 rounded-xl">
+          <section className="glassmorphism p-4 md:p-6 lg:p-8 rounded-xl">
             <h2 className="text-xl font-semibold text-foreground mb-6">Submit a Support Ticket</h2>
             <form className="space-y-6">
               <div>
@@ -147,9 +147,9 @@ const HelpCenter = () => {
           </section>
         </div>
 
-        <div className="lg:col-span-1 space-y-8">
+        <div className="lg:col-span-1 space-y-6 md:space-y-8">
           {/* Track Tickets */}
-          <section className="glassmorphism p-6 md:p-8 rounded-xl">
+          <section className="glassmorphism p-4 md:p-6 lg:p-8 rounded-xl">
             <h2 className="text-xl font-semibold text-foreground mb-6">Track Your Tickets</h2>
             <div className="space-y-4">
               {tickets.map((ticket, index) => (
@@ -171,7 +171,7 @@ const HelpCenter = () => {
           </section>
 
           {/* Contact Support */}
-          <section className="glassmorphism p-6 md:p-8 rounded-xl">
+          <section className="glassmorphism p-4 md:p-6 lg:p-8 rounded-xl">
             <h2 className="text-xl font-semibold text-foreground mb-6">Contact Support</h2>
             <div className="space-y-4">
               <div className="flex items-center space-x-4">

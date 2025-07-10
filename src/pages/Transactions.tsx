@@ -96,7 +96,7 @@ const Transactions = () => {
   };
 
   return (
-    <div className="p-6 md:p-8 space-y-8">
+    <div className="p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
         <div>
           <h1 className="text-3xl font-semibold text-foreground">Transaction History</h1>

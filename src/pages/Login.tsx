@@ -8,7 +8,7 @@ const Login = () => {
   const [view, setView] = useState<'login' | '2fa'>('login');
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 md:p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 md:p-6 bg-background">
       <div className="w-full max-w-md mx-auto">
         <div className="glassmorphism rounded-xl p-6 md:p-8">
           <div className="text-center mb-8">
