@@ -61,10 +61,21 @@ export default {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' }
+        },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)"
+          }
         }
       },
       animation: {
-        marquee: 'marquee 40s linear infinite'
+        marquee: 'marquee 40s linear infinite',
+        "fade-in": "fade-in 0.3s ease-out"
       }
     },
   },
