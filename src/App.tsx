@@ -14,6 +14,8 @@ import Profile from "./pages/Profile";
 import HelpCenter from "./pages/HelpCenter";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import PasswordReset from "./pages/PasswordReset";
+import KYCVerification from "./pages/KYCVerification";
 import Sidebar from "./components/dashboard/Sidebar";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,7 @@ const App = () => (
             {/* Auth Routes - No Sidebar */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/password-reset" element={<PasswordReset />} />
             
             {/* Dashboard Routes - With Sidebar */}
             <Route path="/*" element={
@@ -44,6 +47,7 @@ const App = () => (
                     <Route path="/transactions" element={<Transactions />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/help" element={<HelpCenter />} />
+                    <Route path="/kyc" element={<KYCVerification />} />
                   </Routes>
                 </main>
               </div>
