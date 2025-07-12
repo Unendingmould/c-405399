@@ -18,6 +18,8 @@ import PasswordReset from "./pages/PasswordReset";
 import KYCVerification from "./pages/KYCVerification";
 import WithdrawalConfirmation from "./pages/WithdrawalConfirmation";
 import TransactionDetails from "./pages/TransactionDetails";
+import InvestmentPlans from "./pages/InvestmentPlans";
+import InvestmentDetails from "./pages/InvestmentDetails";
 import Sidebar from "./components/dashboard/Sidebar";
 
 const queryClient = new QueryClient();
@@ -52,6 +54,8 @@ const App = () => (
                     <Route path="/kyc" element={<KYCVerification />} />
                     <Route path="/withdrawal-confirmation" element={<WithdrawalConfirmation />} />
                     <Route path="/transaction-details/:id" element={<TransactionDetails />} />
+                    <Route path="/investment-plans" element={<InvestmentPlans />} />
+                    <Route path="/investment-details/:id" element={<InvestmentDetails />} />
                   </Routes>
                 </main>
               </div>
