@@ -11,6 +11,11 @@ import DepositConfirmation from "./pages/DepositConfirmation";
 import Withdraw from "./pages/Withdraw";
 import Transactions from "./pages/Transactions";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import Settings from "./pages/Settings";
+import Portfolio from "./pages/Portfolio";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import InvestmentConfirmed from "./pages/InvestmentConfirmed";
 import HelpCenter from "./pages/HelpCenter";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -36,6 +41,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/password-reset" element={<PasswordReset />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
             
             {/* Dashboard Routes - With Sidebar */}
             <Route path="/*" element={
@@ -50,6 +56,10 @@ const App = () => (
                     <Route path="/withdraw" element={<Withdraw />} />
                     <Route path="/transactions" element={<Transactions />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile/edit" element={<EditProfile />} />
+                    <Route path="/settings" element={<Settings />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/investment-confirmed" element={<InvestmentConfirmed />} />
                     <Route path="/help" element={<HelpCenter />} />
                     <Route path="/kyc" element={<KYCVerification />} />
                     <Route path="/withdrawal-confirmation" element={<WithdrawalConfirmation />} />

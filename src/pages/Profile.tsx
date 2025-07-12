@@ -1,273 +1,157 @@
 import { useState } from "react";
-import { Save, Upload, CheckCircle, Clock, Shield, User, Lock, Palette } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Edit, Check, Shield, Clock, CheckCircle, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+// Define custom classes for glassmorphism effect if not already in global CSS
+const glassmorphismClasses = "bg-gray-900/60 backdrop-blur-md border border-gray-700/30 shadow-xl";
 
 const Profile = () => {
-  const [formData, setFormData] = useState({
-    name: "Alex Johnson",
-    email: "alex.johnson@example.com",
-    phone: "+1 (555) 123-4567",
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-    currency: "eur",
-    theme: "dark"
-  });
-
-  const [kycCompleted, setKycCompleted] = useState(false); // Toggle this to show different KYC states
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
+  const navigate = useNavigate();
+  const [kycCompleted, setKycCompleted] = useState(false);
+  
   return (
-    <div className="p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8">
+    <main className="flex-1 p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
         <div>
-          <h1 className="text-3xl font-semibold text-foreground">Profile & Settings</h1>
-          <p className="text-muted-foreground">Manage your account details and preferences.</p>
+          <h1 className="text-3xl font-semibold text-gray-100">My Profile</h1>
+          <p className="text-gray-400">View and manage your profile details.</p>
         </div>
-        <div className="flex items-center space-x-4">
-          <span className="text-sm font-medium text-muted-foreground">Last login: 2023-11-16 10:00 AM</span>
-          <Button className="flex items-center space-x-2">
-            <Save className="h-4 w-4" />
-            <span>Save Changes</span>
-          </Button>
-        </div>
+        <Button 
+          className="bg-indigo-500 hover:bg-indigo-600 text-gray-100 font-medium"
+          onClick={() => navigate('/profile/edit')}
+        >
+          <Edit className="h-4 w-4 mr-2" />
+          <span>Edit Profile</span>
+        </Button>
       </header>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
-          {/* User Information */}
-          <Card className="glassmorphism border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <User className="h-5 w-5" />
-                <span>User Information</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Change Password */}
-          <Card className="glassmorphism border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Lock className="h-5 w-5" />
-                <span>Change Password</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="current-password">Current Password</Label>
-                  <Input
-                    id="current-password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={formData.currentPassword}
-                    onChange={(e) => handleInputChange("currentPassword", e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="new-password">New Password</Label>
-                  <Input
-                    id="new-password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={formData.newPassword}
-                    onChange={(e) => handleInputChange("newPassword", e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="confirm-password">Confirm New Password</Label>
-                  <Input
-                    id="confirm-password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={formData.confirmPassword}
-                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-                <div className="md:col-span-2 flex justify-end">
-                  <Button variant="outline">Update Password</Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Preferences */}
-          <Card className="glassmorphism border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Palette className="h-5 w-5" />
-                <span>Preferences</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-                <div>
-                  <Label htmlFor="currency">Preferred Currency</Label>
-                  <Select value={formData.currency} onValueChange={(value) => handleInputChange("currency", value)}>
-                    <SelectTrigger className="mt-2">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="usd">USD - United States Dollar</SelectItem>
-                      <SelectItem value="eur">EUR - Euro</SelectItem>
-                      <SelectItem value="gbp">GBP - British Pound Sterling</SelectItem>
-                      <SelectItem value="jpy">JPY - Japanese Yen</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label>Theme</Label>
-                  <div className="flex items-center space-x-2 bg-muted/50 p-1 rounded-lg mt-2">
-                    <Button
-                      variant={formData.theme === "light" ? "default" : "ghost"}
-                      size="sm"
-                      className="w-full flex justify-center items-center space-x-2"
-                      onClick={() => handleInputChange("theme", "light")}
-                    >
-                      <span>☀️</span>
-                      <span>Light</span>
-                    </Button>
-                    <Button
-                      variant={formData.theme === "dark" ? "default" : "ghost"}
-                      size="sm"
-                      className="w-full flex justify-center items-center space-x-2"
-                      onClick={() => handleInputChange("theme", "dark")}
-                    >
-                      <span>🌙</span>
-                      <span>Dark</span>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={`${glassmorphismClasses} p-6 md:p-8 rounded-xl`}
+      >
+        <div className="flex flex-col md:flex-row items-center md:space-x-8">
+          <div className="relative">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7GwKeX4DhlcaTexHVYxMkH-k2cG4J2X8D1JSeIpe4sVTw41q59fydhVgbABduqYxvpidsPbeAttoroU_yx0r9HkMbRSbPIOrVUGsX6UizpgCtdEFANR5v26Ayc8MRClINojy_dzQFvZ1fHB3ysg3Ft7_QdraC55dY3jm7U30f0Ub4rofo89VHwKkUjy5Wks4anncs9fMMdaTs4rWwRkSvEANooELb2KEbQUhcGaezd4N2iI606N1V55PiHDENXu9h_3bxZN6GRBY" 
+              alt="User profile picture" 
+              className="w-32 h-32 rounded-full object-cover border-4 border-gray-700" 
+            />
+            <span 
+              className="absolute bottom-2 right-2 block h-5 w-5 rounded-full bg-green-500 border-2 border-gray-800" 
+              title="Online"
+            ></span>
+          </div>
+          <div className="mt-6 md:mt-0 text-center md:text-left">
+            <h2 className="text-3xl font-bold text-white">Alex Johnson</h2>
+            <p className="text-indigo-300 mt-1">alex.johnson@example.com</p>
+            <div className="mt-4 flex items-center justify-center md:justify-start space-x-2">
+              <Badge variant="outline" className="bg-green-500/20 text-green-300 border-green-500/30 flex items-center px-3 py-1">
+                <Check className="h-3 w-3 mr-1" />
+                KYC Verified
+              </Badge>
+              <span className="text-sm text-gray-400">Member since: Jan 2022</span>
+            </div>
+          </div>
         </div>
-
-        {/* KYC Verification Sidebar */}
-        <div className="lg:col-span-1">
-          <Card className="glassmorphism border-border">
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Shield className="h-5 w-5" />
-                    <span>KYC Verification</span>
-                  </CardTitle>
-                  <CardDescription>
-                    {kycCompleted 
-                      ? "Your account is fully verified." 
-                      : "Complete verification to unlock all features."
-                    }
-                  </CardDescription>
-                </div>
-                <Badge 
-                  className={kycCompleted 
-                    ? "bg-green-500/10 text-green-400 border-green-500/20" 
-                    : "bg-yellow-500/10 text-yellow-400 border-yellow-500/20"
-                  }
-                >
-                  {kycCompleted ? "Completed" : "Pending"}
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-6">
+        
+        <div className="mt-10 pt-8 border-t border-gray-700/50">
+          <h3 className="text-xl font-semibold text-gray-200 mb-6">Personal Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 text-gray-300">
+            <div>
+              <p className="text-sm text-gray-400">Full Name</p>
+              <p className="font-medium">Alex Johnson</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">Phone Number</p>
+              <p className="font-medium">+1 (555) 123-4567</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">Date of Birth</p>
+              <p className="font-medium">August 24, 1988</p>
+            </div>
+            <div className="md:col-span-2">
+              <p className="text-sm text-gray-400">Address</p>
+              <p className="font-medium">123 Market Street, Suite 450, San Francisco, CA 94103</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">Country</p>
+              <p className="font-medium">United States</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-10 pt-8 border-t border-gray-700/50">
+          <h3 className="text-xl font-semibold text-gray-200 mb-6">Account Settings</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-gray-300">
+            <div>
+              <p className="text-sm text-gray-400">Account Type</p>
+              <p className="font-medium">Premium</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">Account Status</p>
+              <p className="font-medium text-green-400">Active</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">2FA Authentication</p>
+              <p className="font-medium">Enabled</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">Email Notifications</p>
+              <p className="font-medium">Enabled</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-10 pt-8 border-t border-gray-700/50">
+          <h3 className="text-xl font-semibold text-gray-200 mb-6">KYC Verification</h3>
+          <div className="flex items-center space-x-3 mb-6">
+            <Shield className="h-5 w-5 text-indigo-400" />
+            <span className="text-gray-300">Identity and address verification</span>
+          </div>
+          
+          <Card className="bg-gray-800/50 border-gray-700/30">
+            <CardContent className="p-6">
               {!kycCompleted ? (
                 <>
                   <div>
-                    <Label htmlFor="id-type">ID Type</Label>
-                    <Select defaultValue="passport">
-                      <SelectTrigger className="mt-2">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="passport">Passport</SelectItem>
-                        <SelectItem value="license">Driver's License</SelectItem>
-                        <SelectItem value="national-id">National ID Card</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div>
                     <Label>Upload ID Document</Label>
-                    <div className="mt-2 border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors">
-                      <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">
-                        Drag & drop files here or <span className="font-semibold text-primary">browse</span>
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">PNG, JPG, PDF up to 10MB</p>
+                    <div className="mt-2 border-2 border-dashed border-gray-700/50 rounded-lg p-6 text-center cursor-pointer hover:border-indigo-500/50 transition-colors">
+                      <Upload className="h-8 w-8 text-gray-500 mx-auto mb-2" />
+                      <p className="text-sm text-gray-400">Passport, ID card, or Driver's license</p>
+                      <p className="text-xs text-gray-500 mt-1">PNG, JPG, PDF up to 10MB</p>
                     </div>
                   </div>
-
-                  <div>
+                  
+                  <div className="mt-6">
                     <Label>Upload Proof of Address</Label>
-                    <div className="mt-2 border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors">
-                      <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Utility bill, bank statement, etc.</p>
-                      <p className="text-xs text-muted-foreground mt-1">PNG, JPG, PDF up to 10MB</p>
+                    <div className="mt-2 border-2 border-dashed border-gray-700/50 rounded-lg p-6 text-center cursor-pointer hover:border-indigo-500/50 transition-colors">
+                      <Upload className="h-8 w-8 text-gray-500 mx-auto mb-2" />
+                      <p className="text-sm text-gray-400">Utility bill, bank statement, etc.</p>
+                      <p className="text-xs text-gray-500 mt-1">PNG, JPG, PDF up to 10MB</p>
                     </div>
                   </div>
-
+                  
                   <Button 
-                    className="w-full" 
-                    variant="outline"
+                    className="w-full mt-6" 
+                    variant="default"
                     onClick={() => setKycCompleted(true)}
                   >
                     Submit for Verification
                   </Button>
-
-                  <div className="pt-4 border-t border-border">
-                    <h3 className="font-semibold text-foreground mb-2">Verification Status:</h3>
-                    <div className="flex items-center space-x-4 p-4 bg-muted/50 rounded-lg">
+                  
+                  <div className="pt-4 border-t border-gray-700/50 mt-6">
+                    <div className="flex items-center space-x-4 p-4 bg-gray-800/70 rounded-lg">
                       <Clock className="h-8 w-8 text-yellow-400" />
                       <div>
-                        <p className="font-medium text-yellow-400">Pending Approval</p>
-                        <p className="text-xs text-muted-foreground">
-                          Submitted on Nov 15, 2023. Review may take up to 3 business days.
+                        <p className="font-medium text-yellow-400">Verification Status: Pending</p>
+                        <p className="text-xs text-gray-400">
+                          Please submit your documents for KYC verification.
                         </p>
                       </div>
                     </div>
@@ -275,36 +159,36 @@ const Profile = () => {
                 </>
               ) : (
                 <>
-                  <div className="flex items-center space-x-4 p-4 bg-muted/50 rounded-lg">
+                  <div className="flex items-center space-x-4 p-4 bg-gray-800/70 rounded-lg">
                     <CheckCircle className="h-10 w-10 text-green-400" />
                     <div>
                       <p className="font-medium text-green-400">Verification Complete</p>
-                      <p className="text-xs text-muted-foreground">Approved on Nov 18, 2023.</p>
+                      <p className="text-xs text-gray-400">Approved on Nov 18, 2023.</p>
                     </div>
                   </div>
 
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-2">Submitted Documents</h3>
+                  <div className="mt-6">
+                    <h3 className="font-semibold text-gray-200 mb-2">Submitted Documents</h3>
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 bg-muted/70 rounded-lg">
+                      <div className="flex items-center justify-between p-3 bg-gray-800/70 rounded-lg">
                         <div className="flex items-center space-x-3">
-                          <span className="text-primary">🆔</span>
-                          <span className="text-sm font-medium text-foreground">Passport</span>
+                          <span className="text-indigo-400">🆔</span>
+                          <span className="text-sm font-medium text-gray-200">Passport</span>
                         </div>
-                        <span className="text-xs text-muted-foreground">passport.pdf</span>
+                        <span className="text-xs text-gray-400">passport.pdf</span>
                       </div>
-                      <div className="flex items-center justify-between p-3 bg-muted/70 rounded-lg">
+                      <div className="flex items-center justify-between p-3 bg-gray-800/70 rounded-lg">
                         <div className="flex items-center space-x-3">
-                          <span className="text-primary">📄</span>
-                          <span className="text-sm font-medium text-foreground">Proof of Address</span>
+                          <span className="text-indigo-400">📄</span>
+                          <span className="text-sm font-medium text-gray-200">Proof of Address</span>
                         </div>
-                        <span className="text-xs text-muted-foreground">utility_bill.jpg</span>
+                        <span className="text-xs text-gray-400">utility_bill.jpg</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-xs text-muted-foreground">
+                  <div className="pt-4 border-t border-gray-700/50 mt-6">
+                    <p className="text-xs text-gray-400">
                       All your personal information is stored securely and encrypted. 
                       If you need to update your documents, please contact support.
                     </p>
@@ -314,8 +198,8 @@ const Profile = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </main>
   );
 };
 

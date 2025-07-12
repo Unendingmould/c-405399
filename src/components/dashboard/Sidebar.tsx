@@ -24,7 +24,7 @@ const Sidebar = () => {
   
   const navigationItems = [
     { icon: LayoutDashboard, title: "Dashboard", path: "/" },
-    { icon: TrendingUp, title: "Investments", path: "/investments" },
+    { icon: TrendingUp, title: "Investments", path: "/investment-plans" },
     { icon: Wallet, title: "Portfolio", path: "/portfolio" },
     { icon: Receipt, title: "Transactions", path: "/transactions" },
     { icon: BarChart3, title: "Reports", path: "/reports" },
