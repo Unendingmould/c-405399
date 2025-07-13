@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronUp, ChevronDown, TrendingUp, TrendingDown, Wallet, DollarSign, Pie, Clock } from "lucide-react";
+import { ChevronUp, ChevronDown, TrendingUp, TrendingDown, Wallet, DollarSign, PieChart, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -168,7 +168,7 @@ const Portfolio = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div className="rounded-full p-2 bg-blue-500/20">
-                <Pie className="h-5 w-5 text-blue-400" />
+                <PieChart className="h-5 w-5 text-blue-400" />
               </div>
             </div>
             <div className="mt-3">
@@ -177,7 +177,12 @@ const Portfolio = () => {
                 {portfolioSummary.allocated}%
               </h3>
               <div className="mt-2">
-                <Progress value={portfolioSummary.allocated} className="h-2 bg-gray-700" indicatorClassName="bg-gradient-to-r from-indigo-500 to-blue-500" />
+                <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full transition-all duration-300"
+                    style={{ width: `${portfolioSummary.allocated}%` }}
+                  />
+                </div>
               </div>
             </div>
           </CardContent>
@@ -254,7 +259,12 @@ const Portfolio = () => {
                           </div>
                           <span className="text-sm text-gray-400">{asset.allocation}%</span>
                         </div>
-                        <Progress value={asset.allocation} className="h-1.5 bg-gray-700" indicatorClassName={`bg-gradient-to-r ${asset.color}`} />
+                        <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                          <div 
+                            className={`h-full bg-gradient-to-r ${asset.color} rounded-full transition-all duration-300`}
+                            style={{ width: `${asset.allocation}%` }}
+                          />
+                        </div>
                         <div className="flex justify-between text-xs">
                           <span className="text-gray-400">
                             ${asset.value.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}

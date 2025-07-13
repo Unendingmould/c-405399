@@ -25,6 +25,7 @@ import WithdrawalConfirmation from "./pages/WithdrawalConfirmation";
 import TransactionDetails from "./pages/TransactionDetails";
 import InvestmentPlans from "./pages/InvestmentPlans";
 import InvestmentDetails from "./pages/InvestmentDetails";
+import Index from "./pages/Index";
 import Sidebar from "./components/dashboard/Sidebar";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,9 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Landing Page Route - No Sidebar */}
+            <Route path="/" element={<Index />} />
+            
             {/* Auth Routes - No Sidebar */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
@@ -44,7 +48,7 @@ const App = () => (
             <Route path="/terms" element={<TermsAndConditions />} />
             
             {/* Dashboard Routes - With Sidebar */}
-            <Route path="/*" element={
+            <Route path="/dashboard/*" element={
               <div className="flex">
                 <Sidebar />
                 <main className="flex-1">
