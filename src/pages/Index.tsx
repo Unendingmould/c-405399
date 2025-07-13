@@ -1,17 +1,25 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Command } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import { FeaturesSection } from "@/components/features/FeaturesSection";
-import { PricingSection } from "@/components/pricing/PricingSection";
 import LogoCarousel from "@/components/LogoCarousel";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { PricingSection } from "@/components/pricing/PricingSection";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Command } from "lucide-react";
 
 const Index = () => {
+  useEffect(() => {
+    console.log("Index page mounted");
+    document.title = "Crypto Trading Platform";
+  }, []);
+  
+  console.log("Index page rendering");
+  
   return (
-    <div className="min-h-screen bg-black text-foreground">
+    <div className="min-h-screen bg-black text-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -21,11 +29,6 @@ const Index = () => {
         transition={{ duration: 0.5 }}
         className="relative container px-4 pt-40 pb-20"
       >
-        {/* Background */}
-        <div 
-          className="absolute inset-0 -z-10 bg-[#0A0A0A]"
-        />
-        
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -50,97 +53,53 @@ const Index = () => {
           </h1>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl text-left"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl"
           >
-            Advanced AI models applied by experts that learn, adapt, and optimize your crypto investments.{" "}
-            <span className="text-white">Start investing now in minutes.</span>
+            Our AI-powered platform analyzes market trends and automatically adjusts your portfolio to maximize returns while minimizing risks.
           </motion.p>
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 items-start"
+            className="flex flex-wrap gap-3"
           >
-            <Button size="lg" className="button-gradient">
-              Start Investing
+            <Button size="lg" className="rounded-lg button-gradient" asChild>
+              <a href="/signup">Start Trading Now</a>
             </Button>
-            <Button size="lg" variant="link" className="text-white">
-              View Plans <ArrowRight className="ml-2 w-4 h-4" />
+            <Button size="lg" variant="outline" className="rounded-lg border-gray-700 hover:bg-gray-800/50" asChild>
+              <a href="/login">Login to Account</a>
+            </Button>
+            <Button size="lg" variant="ghost" className="rounded-lg hover:bg-gray-800/50" asChild>
+              <a href="#features">Learn More <ArrowRight className="ml-2 w-4 h-4" /></a>
             </Button>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="relative mx-auto max-w-5xl mt-20"
-        >
-          <div className="glass rounded-xl overflow-hidden">
-            <img
-              src="/lovable-uploads/c32c6788-5e4a-4fee-afee-604b03113c7f.png"
-              alt="CryptoTrade Dashboard"
-              className="w-full h-auto"
-            />
-          </div>
-        </motion.div>
       </motion.section>
-
+      
       {/* Logo Carousel */}
       <LogoCarousel />
-
+      
       {/* Features Section */}
-      <div id="features" className="bg-black">
+      <div id="features" className="pt-10">
         <FeaturesSection />
       </div>
-
+      
       {/* Pricing Section */}
-      <div id="pricing" className="bg-black">
+      <div id="pricing" className="pt-10">
         <PricingSection />
       </div>
-
+      
       {/* Testimonials Section */}
-      <div className="bg-black">
+      <div id="testimonials" className="pt-10">
         <TestimonialsSection />
       </div>
-
-      {/* CTA Section */}
-      <section className="container px-4 py-20 relative bg-black">
-        <div 
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: 'url("/lovable-uploads/21f3edfb-62b5-4e35-9d03-7339d803b980.png")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-[#0A0A0A]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 text-center relative z-10"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to start trading?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of traders who have already discovered the power of our platform.
-          </p>
-          <Button size="lg" className="button-gradient">
-            Create Account
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
-        </motion.div>
-      </section>
-
+      
       {/* Footer */}
-      <div className="bg-black">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

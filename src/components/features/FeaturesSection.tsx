@@ -3,6 +3,35 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FeatureTab } from "./FeatureTab";
 import { FeatureContent } from "./FeatureContent";
 import { features } from "@/config/features";
+import { BarChart3, ShieldCheck, Wallet, ArrowUpDown } from "lucide-react";
+import { ReactNode } from "react";
+
+// Define the type for our features with iconName
+type FeatureWithIconName = {
+  title: string;
+  description: string;
+  iconName: string;
+  image: string;
+};
+
+// Type assertion to help TypeScript understand our features structure
+const featuresWithIconName = features as unknown as FeatureWithIconName[];
+
+// Function to convert icon name string to the actual icon component
+const getIconComponent = (iconName: string) => {
+  switch (iconName) {
+    case "BarChart3":
+      return <BarChart3 className="w-6 h-6" />;
+    case "ShieldCheck":
+      return <ShieldCheck className="w-6 h-6" />;
+    case "Wallet":
+      return <Wallet className="w-6 h-6" />;
+    case "ArrowUpDown":
+      return <ArrowUpDown className="w-6 h-6" />;
+    default:
+      return <BarChart3 className="w-6 h-6" />; // Default icon
+  }
+};
 
 export const FeaturesSection = () => {
   return (
@@ -24,7 +53,7 @@ export const FeaturesSection = () => {
           {/* Left side - Tab triggers */}
           <div className="md:col-span-5 space-y-3">
             <TabsList className="flex flex-col w-full bg-transparent h-auto p-0 space-y-3">
-              {features.map((feature) => (
+              {featuresWithIconName.map((feature) => (
                 <TabsTrigger
                   key={feature.title}
                   value={feature.title}
@@ -33,7 +62,7 @@ export const FeaturesSection = () => {
                   <FeatureTab
                     title={feature.title}
                     description={feature.description}
-                    icon={feature.icon}
+                    icon={getIconComponent(feature.iconName)}
                     isActive={false}
                   />
                 </TabsTrigger>
@@ -43,7 +72,7 @@ export const FeaturesSection = () => {
 
           {/* Right side - Tab content with images */}
           <div className="md:col-span-7">
-            {features.map((feature) => (
+            {featuresWithIconName.map((feature) => (
               <TabsContent
                 key={feature.title}
                 value={feature.title}

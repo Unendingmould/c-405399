@@ -42,12 +42,12 @@ const Footer = () => {
               <h4 className="font-medium">Resources</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href="/dashboard/help" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Trading Guide
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href="/dashboard/investment-plans" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Market Analysis
                   </a>
                 </li>
@@ -58,12 +58,12 @@ const Footer = () => {
               <h4 className="font-medium">Legal</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Terms of Service
                   </a>
                 </li>

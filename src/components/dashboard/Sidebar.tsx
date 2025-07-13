@@ -23,17 +23,17 @@ const Sidebar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   
   const navigationItems = [
-    { icon: LayoutDashboard, title: "Dashboard", path: "/" },
-    { icon: TrendingUp, title: "Investments", path: "/investment-plans" },
-    { icon: Wallet, title: "Portfolio", path: "/portfolio" },
-    { icon: Receipt, title: "Transactions", path: "/transactions" },
-    { icon: BarChart3, title: "Reports", path: "/reports" },
-    { icon: User, title: "Profile", path: "/profile" },
+    { icon: LayoutDashboard, title: "Dashboard", path: "/dashboard" },
+    { icon: TrendingUp, title: "Investments", path: "/dashboard/investment-plans" },
+    { icon: Wallet, title: "Portfolio", path: "/dashboard/portfolio" },
+    { icon: Receipt, title: "Transactions", path: "/dashboard/transactions" },
+    { icon: BarChart3, title: "Reports", path: "/dashboard/reports" },
+    { icon: User, title: "Profile", path: "/dashboard/profile" },
   ];
 
   const bottomItems = [
-    { icon: HelpCircle, title: "Help Center", path: "/help" },
-    { icon: Settings, title: "Settings", path: "/settings" },
+    { icon: HelpCircle, title: "Help Center", path: "/dashboard/help" },
+    { icon: Settings, title: "Settings", path: "/dashboard/settings" },
     { icon: LogOut, title: "Logout", path: "/login" },
   ];
 

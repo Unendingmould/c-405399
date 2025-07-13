@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronUp, ChevronDown, TrendingUp, TrendingDown, Wallet, DollarSign, Pie, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ChevronUp, ChevronDown, TrendingUp, TrendingDown, Wallet, DollarSign, PieChart, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,6 +11,7 @@ import { motion } from "framer-motion";
 const glassmorphismClasses = "bg-gray-900/60 backdrop-blur-md border border-gray-700/30 shadow-xl";
 
 const Portfolio = () => {
+  const navigate = useNavigate();
   const [timeframe, setTimeframe] = useState("all");
 
   const portfolioSummary = {
@@ -157,9 +159,23 @@ const Portfolio = () => {
               <h3 className="text-2xl font-bold text-gray-100">
                 ${portfolioSummary.available.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
               </h3>
-              <p className="text-sm mt-1 text-gray-400">
+              <p className="text-sm mt-1 mb-3 text-gray-400">
                 Ready to invest
               </p>
+              <div className="flex space-x-2">
+                <button 
+                  onClick={() => navigate('/dashboard/deposit')} 
+                  className="flex-1 bg-green-600 hover:bg-green-700 text-white py-1 px-2 rounded-md text-xs font-medium transition-colors"
+                >
+                  Deposit
+                </button>
+                <button 
+                  onClick={() => navigate('/dashboard/withdraw')} 
+                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-1 px-2 rounded-md text-xs font-medium transition-colors"
+                >
+                  Withdraw
+                </button>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -168,7 +184,7 @@ const Portfolio = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div className="rounded-full p-2 bg-blue-500/20">
-                <Pie className="h-5 w-5 text-blue-400" />
+                <PieChart className="h-5 w-5 text-blue-400" />
               </div>
             </div>
             <div className="mt-3">
@@ -177,7 +193,12 @@ const Portfolio = () => {
                 {portfolioSummary.allocated}%
               </h3>
               <div className="mt-2">
-                <Progress value={portfolioSummary.allocated} className="h-2 bg-gray-700" indicatorClassName="bg-gradient-to-r from-indigo-500 to-blue-500" />
+                <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-700">
+                  <div 
+                    className="absolute left-0 top-0 h-full bg-gradient-to-r from-indigo-500 to-blue-500"
+                    style={{ width: `${portfolioSummary.allocated}%` }}
+                  />
+                </div>
               </div>
             </div>
           </CardContent>
@@ -254,7 +275,12 @@ const Portfolio = () => {
                           </div>
                           <span className="text-sm text-gray-400">{asset.allocation}%</span>
                         </div>
-                        <Progress value={asset.allocation} className="h-1.5 bg-gray-700" indicatorClassName={`bg-gradient-to-r ${asset.color}`} />
+                        <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-gray-700">
+                          <div 
+                            className={`absolute left-0 top-0 h-full bg-gradient-to-r ${asset.color}`}
+                            style={{ width: `${asset.allocation}%` }}
+                          />
+                        </div>
                         <div className="flex justify-between text-xs">
                           <span className="text-gray-400">
                             ${asset.value.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ArrowRight, Info, Clock, CreditCard, Wallet, Bitcoin, Check, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Info, Clock, CreditCard, Wallet, Bitcoin, Check, X, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Badge } from "@/components/ui/badge";
 
 const Withdraw = () => {
+  const navigate = useNavigate();
   const [withdrawalMethod, setWithdrawalMethod] = useState("Bank");
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [withdrawalAmount, setWithdrawalAmount] = useState(500);
@@ -62,6 +64,16 @@ const Withdraw = () => {
 
   return (
     <div className="p-6 md:p-8 space-y-8">
+      {/* Return Button */}
+      <Button 
+        variant="ghost" 
+        className="mb-4 flex items-center text-muted-foreground hover:text-foreground" 
+        onClick={() => navigate('/dashboard/portfolio')}
+      >
+        <ChevronLeft className="w-4 h-4 mr-1" />
+        Return to Portfolio
+      </Button>
+      
       {/* Header */}
       <header>
         <h1 className="text-3xl font-semibold text-foreground">Withdraw Funds</h1>

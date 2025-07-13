@@ -23,7 +23,7 @@ const Profile = () => {
         </div>
         <Button 
           className="bg-indigo-500 hover:bg-indigo-600 text-gray-100 font-medium"
-          onClick={() => navigate('/profile/edit')}
+          onClick={() => navigate('/dashboard/profile/edit')}
         >
           <Edit className="h-4 w-4 mr-2" />
           <span>Edit Profile</span>

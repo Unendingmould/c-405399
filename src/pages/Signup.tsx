@@ -4,7 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
+import { useNavigate } from "react-router-dom";
+
 const Signup = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [code, setCode] = useState(['', '', '', '', '', '']);
 
@@ -88,7 +91,7 @@ const Signup = () => {
                 <div className="text-sm">
                   <label className="text-muted-foreground" htmlFor="terms">
                     I accept the{" "}
-                    <a className="font-medium text-primary hover:underline" href="#">
+                    <a className="font-medium text-primary hover:underline" href="/terms">
                       Terms and Conditions
                     </a>
                   </label>
@@ -121,7 +124,7 @@ const Signup = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                setStep(3);
+                navigate('/dashboard');
               }}
               className="space-y-6"
             >

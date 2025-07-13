@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Reports from "./pages/Reports";
 import Deposit from "./pages/Deposit";
@@ -16,7 +17,7 @@ import Settings from "./pages/Settings";
 import Portfolio from "./pages/Portfolio";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import InvestmentConfirmed from "./pages/InvestmentConfirmed";
-import HelpCenter from "./pages/HelpCenter";
+import Help from "./pages/Help";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PasswordReset from "./pages/PasswordReset";
@@ -37,6 +38,9 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Landing Page */}
+            <Route path="/" element={<Index />} />
+            
             {/* Auth Routes - No Sidebar */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
@@ -44,7 +48,7 @@ const App = () => (
             <Route path="/terms" element={<TermsAndConditions />} />
             
             {/* Dashboard Routes - With Sidebar */}
-            <Route path="/*" element={
+            <Route path="/dashboard/*" element={
               <div className="flex">
                 <Sidebar />
                 <main className="flex-1">
@@ -60,7 +64,7 @@ const App = () => (
                     <Route path="/settings" element={<Settings />} />
                     <Route path="/portfolio" element={<Portfolio />} />
                     <Route path="/investment-confirmed" element={<InvestmentConfirmed />} />
-                    <Route path="/help" element={<HelpCenter />} />
+                    <Route path="/help" element={<Help />} />
                     <Route path="/kyc" element={<KYCVerification />} />
                     <Route path="/withdrawal-confirmation" element={<WithdrawalConfirmation />} />
                     <Route path="/transaction-details/:id" element={<TransactionDetails />} />
