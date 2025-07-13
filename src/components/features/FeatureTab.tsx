@@ -15,8 +15,8 @@ export const FeatureTab = ({ icon, title, description, isActive }: FeatureTabPro
         w-full flex items-center gap-4 p-5 rounded-xl
         transition-all duration-300 relative
         ${isActive 
-          ? 'feature-card-light shadow-lg shadow-primary/10 border-primary/20' 
-          : 'feature-card-light hover:shadow-md hover:border-primary/10'
+          ? 'glass shadow-lg shadow-primary/10' 
+          : 'hover:glass-hover'
         }
       `}
     >
@@ -34,7 +34,7 @@ export const FeatureTab = ({ icon, title, description, isActive }: FeatureTabPro
           {icon}
         </div>
         <div className="text-left min-w-0">
-          <h3 className={`font-semibold truncate text-base ${isActive ? 'text-primary' : 'text-foreground'}`}>
+          <h3 className={`font-semibold truncate text-base ${isActive ? 'text-primary' : ''}`}>
             {title}
           </h3>
           <p className="text-sm text-muted-foreground line-clamp-2">

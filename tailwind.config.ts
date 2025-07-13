@@ -29,11 +29,8 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#4ADE80",
           foreground: "hsl(var(--primary-foreground))",
-          green: "hsl(var(--primary-green))",
-          "green-hover": "hsl(var(--primary-green-hover))",
-          "green-light": "hsl(var(--primary-green-light))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -59,9 +56,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        success: "hsl(var(--success))",
-        warning: "hsl(var(--warning))",
-        info: "hsl(var(--info))",
       },
       keyframes: {
         marquee: {

@@ -8,7 +8,7 @@ import TopCoins from "@/components/dashboard/TopCoins";
 
 const Dashboard = () => {
   return (
-    <main className="flex-1 p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8 bg-background">
+    <main className="flex-1 p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8 pt-20 md:pt-8">
       <Header />
       
       <section>
@@ -16,10 +16,10 @@ const Dashboard = () => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="dashboard-card p-4 md:p-6 rounded-xl mb-6 md:mb-8"
+          className="glass p-4 md:p-6 rounded-xl mb-6 md:mb-8"
         >
-          <p className="text-xs md:text-sm text-muted-foreground mb-1">TOTAL INVESTMENT VALUE</p>
-          <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">$125,780.50</p>
+          <p className="text-xs md:text-sm text-gray-400 mb-1">TOTAL INVESTMENT VALUE</p>
+          <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-100">$125,780.50</p>
         </motion.div>
 
         <KPICards />
