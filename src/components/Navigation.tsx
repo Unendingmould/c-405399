@@ -49,15 +49,15 @@ const Navigation = () => {
     <header
       className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
         isScrolled 
-          ? "h-14 bg-[#1B1B1B]/40 backdrop-blur-xl border border-white/10 scale-95 w-[90%] max-w-2xl" 
-          : "h-14 bg-[#1B1B1B] w-[95%] max-w-3xl"
+          ? "h-14 nav-light-scrolled scale-95 w-[90%] max-w-2xl" 
+          : "h-14 nav-light w-[95%] max-w-3xl"
       }`}
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
             <Command className="w-5 h-5 text-primary" />
-            <span className="font-bold text-base">Treefolio</span>
+            <span className="font-bold text-base text-foreground">Treefolio</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -90,11 +90,11 @@ const Navigation = () => {
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="glass">
+                <Button variant="outline" size="icon" className="bg-white/80 border-gray-200/50 hover:bg-gray-50">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-[#1B1B1B]">
+              <SheetContent className="bg-white border-gray-200/50">
                 <div className="flex flex-col gap-4 mt-8">
                   {navItems.map((item) => (
                     <a

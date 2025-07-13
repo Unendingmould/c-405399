@@ -128,6 +128,33 @@
   @apply bg-white border border-gray-200/50 shadow-sm;
 }
 
+/* Feature section specific */
+.feature-card-light {
+  @apply bg-white/60 backdrop-blur-lg border border-gray-200/30 shadow-lg hover:shadow-xl hover:border-primary/20 transition-all duration-300;
+}
+
+.feature-content-light {
+  @apply bg-gradient-to-br from-gray-50/80 to-white border border-gray-200/40 shadow-sm;
+}
+
+/* Testimonial section specific */
+.testimonial-card-light {
+  @apply bg-white/90 backdrop-blur-lg border border-gray-200/40 shadow-md hover:shadow-lg hover:border-primary/20 transition-all duration-300;
+}
+
+.testimonial-section-light {
+  @apply bg-gradient-to-b from-gray-50/50 to-white/80;
+}
+
+/* Navigation specific */
+.nav-light {
+  @apply bg-white/95 backdrop-blur-xl border border-gray-200/50 shadow-lg;
+}
+
+.nav-light-scrolled {
+  @apply bg-white/98 backdrop-blur-xl border border-gray-200/60 shadow-xl;
+}
+
 /* Dashboard specific styles */
 .dashboard-card {
   @apply bg-card border border-border shadow-sm rounded-lg;

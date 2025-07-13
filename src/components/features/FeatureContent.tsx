@@ -13,8 +13,8 @@ export const FeatureContent = ({ image, title }: FeatureContentProps) => {
       transition={{ duration: 0.5 }}
       className="h-full flex items-center justify-center"
     >
-      <div className="glass rounded-xl overflow-hidden w-full relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+      <div className="feature-content-light rounded-xl overflow-hidden w-full relative shadow-lg">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/2" />
         <img
           src={image}
           alt={title}
