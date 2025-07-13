@@ -53,12 +53,12 @@ const Sidebar = () => {
   const NavigationContent = () => (
     <div className="flex flex-col h-full">
       {/* Header with Logo */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-700/50">
-        <div className="text-3xl font-bold text-indigo-400">P</div>
+      <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="text-3xl font-bold text-primary">P</div>
         {!isMobile && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2 rounded-lg text-gray-400 hover:text-indigo-400 hover:bg-gray-800 transition-all duration-300"
+            className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-accent transition-all duration-300"
             aria-label={isExpanded ? "Collapse sidebar" : "Expand sidebar"}
           >
             {isExpanded ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -77,8 +77,8 @@ const Sidebar = () => {
               onClick={() => setIsSheetOpen(false)}
               className={`sidebar-icon p-3 rounded-lg transition-all duration-300 relative flex items-center ${
                 isActive 
-                  ? "text-indigo-400 bg-gray-800" 
-                  : "text-gray-400 hover:text-indigo-400 hover:bg-gray-800"
+                  ? "text-primary bg-accent" 
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
               } ${!isExpanded && !isMobile && "justify-center"}`}
               title={!isExpanded && !isMobile ? item.title : undefined}
             >
@@ -87,7 +87,7 @@ const Sidebar = () => {
                 <span className="ml-3 font-medium animate-fade-in">{item.title}</span>
               )}
               {isActive && (
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4/5 bg-indigo-400 rounded-r-lg" />
+                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4/5 bg-primary rounded-r-lg" />
               )}
             </Link>
           );
@@ -95,7 +95,7 @@ const Sidebar = () => {
       </nav>
       
       {/* Bottom Items */}
-      <div className="flex flex-col space-y-2 p-4 border-t border-gray-700/50">
+      <div className="flex flex-col space-y-2 p-4 border-t border-border">
         {bottomItems.map((item, index) => {
           const isActive = location.pathname === item.path;
           return (
@@ -105,8 +105,8 @@ const Sidebar = () => {
               onClick={() => setIsSheetOpen(false)}
               className={`sidebar-icon p-3 rounded-lg transition-all duration-300 relative flex items-center ${
                 isActive 
-                  ? "text-indigo-400 bg-gray-800" 
-                  : "text-gray-400 hover:text-indigo-400 hover:bg-gray-800"
+                  ? "text-primary bg-accent" 
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
               } ${!isExpanded && !isMobile && "justify-center"}`}
               title={!isExpanded && !isMobile ? item.title : undefined}
             >
@@ -115,7 +115,7 @@ const Sidebar = () => {
                 <span className="ml-3 font-medium animate-fade-in">{item.title}</span>
               )}
               {isActive && (
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4/5 bg-indigo-400 rounded-r-lg" />
+                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4/5 bg-primary rounded-r-lg" />
               )}
             </Link>
           );
@@ -128,15 +128,15 @@ const Sidebar = () => {
     return (
       <>
         {/* Mobile Header with Hamburger */}
-        <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-gray-900 border-b border-gray-700/50 p-4 flex items-center justify-between">
-          <div className="text-2xl font-bold text-indigo-400">P</div>
+        <div className="md:hidden fixed top-0 left-0 right-0 z-50 dashboard-sidebar border-b border-border p-4 flex items-center justify-between">
+          <div className="text-2xl font-bold text-primary">P</div>
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <button className="p-2 rounded-lg text-gray-400 hover:text-indigo-400 hover:bg-gray-800 transition-all duration-300">
+              <button className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-accent transition-all duration-300">
                 <Menu className="w-6 h-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-80 bg-gray-900 border-gray-700/50 p-0">
+            <SheetContent side="left" className="w-80 dashboard-sidebar border-border p-0">
               <NavigationContent />
             </SheetContent>
           </Sheet>
@@ -151,7 +151,7 @@ const Sidebar = () => {
     <aside 
       className={`${
         isExpanded ? "w-64" : "w-20"
-      } bg-gray-900 flex flex-col sticky top-0 h-screen border-r border-gray-700/50 transition-all duration-300 ease-in-out hidden md:flex`}
+      } dashboard-sidebar flex flex-col sticky top-0 h-screen border-r border-border transition-all duration-300 ease-in-out hidden md:flex`}
     >
       <NavigationContent />
     </aside>
