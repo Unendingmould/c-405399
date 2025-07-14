@@ -1,34 +1,136 @@
 
 import { motion } from "framer-motion";
-import { ArrowUp, ArrowDown } from "lucide-react";
+import { ArrowUp, ArrowDown, RefreshCcw } from "lucide-react";
+import { useState, useEffect } from "react";
+import { marketDataApi } from "@/lib/api";
+import webSocketService from "@/lib/websocket";
+
+interface Coin {
+  name: string;
+  symbol: string;
+  price: string;
+  change: string;
+  isPositive: boolean;
+  icon: string;
+}
 
 const TopCoins = () => {
-  const coins = [
+  const [coins, setCoins] = useState<Coin[]>([
     {
       name: "Bitcoin",
-      symbol: "BTC",
-      price: "$58,291.70",
-      change: "+1.25%",
+      symbol: "BTC-USD",
+      price: "$--,---.--",
+      change: "0.00%",
       isPositive: true,
       icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
     },
     {
       name: "Ethereum",
-      symbol: "ETH",
-      price: "$3,910.45",
-      change: "-0.58%",
-      isPositive: false,
+      symbol: "ETH-USD",
+      price: "$--,---.--",
+      change: "0.00%",
+      isPositive: true,
       icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
     },
     {
       name: "Solana",
-      symbol: "SOL",
-      price: "$165.80",
-      change: "+3.10%",
+      symbol: "SOL-USD",
+      price: "$--,---.--",
+      change: "0.00%",
       isPositive: true,
       icon: "https://cryptologos.cc/logos/solana-sol-logo.png",
     },
-  ];
+  ]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  // Fetch initial coin data
+  useEffect(() => {
+    fetchCoinData();
+  }, []);
+  
+  // Setup WebSocket listeners for real-time updates
+  useEffect(() => {
+    const symbols = coins.map(coin => coin.symbol);
+    
+    // Subscribe to market data updates
+    const unsubscribe = webSocketService.subscribe('market', (data) => {
+      if (data && data.symbol && symbols.includes(data.symbol)) {
+        updateCoinData(data);
+      }
+    });
+    
+    return () => {
+      unsubscribe();
+    };
+  }, [coins]);
+  
+  const fetchCoinData = async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const symbols = coins.map(coin => coin.symbol);
+      const response = await marketDataApi.getMultipleAssetPrices(symbols);
+      
+      if (response.data && response.data.data) {
+        const marketData = response.data.data;
+        
+        setCoins(prevCoins => {
+          return prevCoins.map(coin => {
+            const data = marketData[coin.symbol];
+            
+            if (!data) return coin;
+            
+            const formattedPrice = new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            }).format(data.price);
+            
+            const formattedChange = `${data.changePercent >= 0 ? '+' : ''}${data.changePercent.toFixed(2)}%`;
+            
+            return {
+              ...coin,
+              price: formattedPrice,
+              change: formattedChange,
+              isPositive: data.changePercent >= 0
+            };
+          });
+        });
+      }
+    } catch (err) {
+      console.error('Failed to fetch coin data:', err);
+      setError('Failed to load market data');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const updateCoinData = (data: any) => {
+    setCoins(prevCoins => {
+      return prevCoins.map(coin => {
+        if (coin.symbol !== data.symbol) return coin;
+        
+        const formattedPrice = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(data.price);
+        
+        const formattedChange = `${data.changePercent >= 0 ? '+' : ''}${data.changePercent.toFixed(2)}%`;
+        
+        return {
+          ...coin,
+          price: formattedPrice,
+          change: formattedChange,
+          isPositive: data.changePercent >= 0
+        };
+      });
+    });
+  };
 
   return (
     <motion.div 
